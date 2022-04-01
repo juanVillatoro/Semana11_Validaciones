@@ -64,6 +64,8 @@ class EstudianteController extends Controller
     public function edit($id)
     {
         //
+        $estudiante=Estudiante::findOrFail($id);
+        return view('estudiante.edit', compact('estudiante'));
     }
 
     /**
@@ -76,6 +78,9 @@ class EstudianteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $estudianteData = request()->except(['_token','_method']);
+        Estudiante::where('id', '=', $id)->update($estudianteData);
+        return redirect('estudiantes');
     }
 
     /**

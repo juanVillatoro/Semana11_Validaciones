@@ -25,7 +25,7 @@
             <td>{{ $estudiante->phone }}</td>
             <td>{{ $estudiante->email }}</td>
             {{-- Incluimos acciones de eliminar y editar --}}
-            <form action="{{ url('/estudiante/'.$estudiante->id) }}" method="POST">
+            <form action="{{ url('/estudiantes/'.$estudiante->id) }}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
                 <td>
@@ -34,7 +34,7 @@
                 </td>
             </form>
             {{-- se incluye la opción de editar--}}
-            <form action="{{ url('/estudiante/'.$estudiante->id .'/edit') }}">
+            <form action="{{ url('/estudiantes/'.$estudiante->id .'/edit') }}">
                 <td>
                     <input class="btn btn-success" type="submit" value="Editar">
                 </td>
