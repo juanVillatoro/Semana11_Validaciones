@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -63,7 +64,7 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
-        //
+        //Se muestra el formulario del estudiante
         $estudiante=Estudiante::findOrFail($id);
         return view('estudiante.edit', compact('estudiante'));
     }
@@ -77,7 +78,7 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Se actualiza el registro
         $estudianteData = request()->except(['_token','_method']);
         Estudiante::where('id', '=', $id)->update($estudianteData);
         return redirect('estudiantes');
@@ -91,6 +92,8 @@ class EstudianteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //agregamos funcion para eliminar registro
+        Estudiante::destroy($id);
+        return redirect('estudiantes');
     }
 }
